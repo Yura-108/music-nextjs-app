@@ -103,20 +103,19 @@ export default async function ArtistPage({
       getArtist(id),
       getReleases(id, 0),
     ]);
-  } catch (err) {
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      console.error("Ошибка:", err.message);
+    }
     notFound();
   }
+
 
   const releases = releasesData["release-groups"] || [];
   const totalReleases = releasesData["release-group-count"] || 0;
 
-  // Метаданные + Open Graph
-  const title = `${artist.name} ${artist.disambiguation ? `(${artist.disambiguation})` : ""} | MusicBrainz`;
-  const description = `${artist.type || "Артист"}${artist.country ? ` из ${artist.country}` : ""}. ${artist["life-span"]?.begin ? `Активен с ${artist["life-span"].begin.split("-")[0]}` : ""}`;
-
   return (
     <>
-      {/* Метаданные */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

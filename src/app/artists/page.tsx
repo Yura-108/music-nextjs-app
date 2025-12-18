@@ -2,9 +2,11 @@ import { Suspense } from "react";
 import { ArtistsList } from "@/components/artists/ArtistsList";
 import { ArtistsSkeleton } from "@/components/artists/ArtistsSkeleton";
 
-export const metadata = {
-  title: "Артисты — MusicBrainz",
-  description: "Поиск и просмотр артистов из базы MusicBrainz",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Мой проект",
+  description: "Описание проекта"
 };
 
 export default async function ArtistsPage({searchParams}: {

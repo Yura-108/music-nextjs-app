@@ -48,7 +48,6 @@ async function searchArtists(query: string, offset: number): Promise<SearchRespo
 
 export function ArtistsList({
                               initialQuery = "",
-                              initialOffset = 0,
                             }: {
   initialQuery?: string;
   initialOffset?: number;
